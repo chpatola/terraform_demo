@@ -1,0 +1,20 @@
+[
+    {
+        "name": "item",
+        "type": "STRING",
+        "mode": "REQUIRED",
+        "description": "Budget item"
+    },
+    {
+        "name": "target-value",
+        "type": "NUMERIC",
+        "mode": "NULLABLE",
+        "description": "Target value for the budget item"
+    },
+    {
+        "name": "year",
+        "type": "INT64",
+        "mode": "NULLABLE",
+        "description": "Time period for the yearly budget"
+    }
+]

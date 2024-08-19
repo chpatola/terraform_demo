@@ -1,0 +1,4 @@
+terraform_gcloud_keys.json
+.terraform
+.terraform.tfstate.lock.info
+terraform.tfstate.* 
