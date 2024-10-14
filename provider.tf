@@ -16,5 +16,5 @@ provider "google" {
   project     = var.project
   region      = "europe-west3"
   zone        = "europe-west3-a"
-  credentials = "terraform_gcloud_keys.json"
+  credentials = "terraform_gcloud_keys.json" 
 }
