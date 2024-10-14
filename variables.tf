@@ -18,3 +18,7 @@ variable "bq_use_legacy_sql" {
   type = bool
   description = "Shall legacy sql be used in query or not"
 }
+
+# Variables that will be provided by GithUb secrets
+variable "bucket" {}
+variable "credentials" {}

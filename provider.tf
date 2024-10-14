@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket = "chpa_terraformdemo_backend_bucket"
-    credentials = "terraform_gcloud_keys.json"
+    bucket = var.bucket 
+    credentials = var.credentials 
   }
 
 }

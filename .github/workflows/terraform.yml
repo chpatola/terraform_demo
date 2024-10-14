@@ -37,6 +37,7 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
       env: 
+        TF_VAR_bucket : ${{ secrets.GCLOUD_STATE_BUCKET}}  
         TF_VAR_credentials: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
@@ -45,4 +46,5 @@ jobs:
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply -auto-approve
       env: 
+        TF_VAR_bucket : ${{ secrets.GCLOUD_STATE_BUCKET}}  
         TF_VAR_credentials: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
