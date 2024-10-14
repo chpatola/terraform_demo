@@ -6,6 +6,5 @@
 3. 
 
 ## Next things to do
-1. Init git
-2. Move to GithUb
-3. Create Github workflow, including credentials instead of local keys json file
+1. Move to GithUb
+2. Create Github workflow, including credentials instead of local keys json file
