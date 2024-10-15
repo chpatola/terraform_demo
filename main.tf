@@ -1,15 +1,3 @@
-
-# Buckets
-resource "google_storage_bucket" "terraform_backend" {
-  name          = "chpa_terraformdemo_backend_bucket"
-  location      = var.location
-  force_destroy = true
-  storage_class = "STANDARD"
-  versioning {
-    enabled = true
-  }
-}
-
 # Datasets
 resource "google_bigquery_dataset" "ds_finance" {
   dataset_id                  = "finance"
@@ -23,7 +11,7 @@ resource "google_bigquery_dataset" "ds_finance" {
 resource "google_bigquery_dataset" "ds_hr" {
   dataset_id                  = "hr"
   friendly_name               = "HR Dataset"
-  description                 = "This dataset contains tables and views used by the HR department"
+  description                 = "This dataset contains tables and views used by the HR department. Access restricted."
   location                    = var.location
   default_table_expiration_ms = var.bq_default_table_expiration_ms
 }

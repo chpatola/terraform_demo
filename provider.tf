@@ -7,7 +7,8 @@ terraform {
   }
   backend "gcs" {
     bucket = "chpa_terraformdemo_backend_bucket"
-    #credentials = "terraform_demo/.terraform/terraform.tfstate"
+    # Uncomment below if terraform is deployed from local
+    #credentials = "terraform_gcloud_keys.json" 
   }
 
 }
@@ -16,5 +17,6 @@ provider "google" {
   project     = var.project
   region      = "europe-west3"
   zone        = "europe-west3-a"
-  credentials = "terraform_gcloud_keys.json" 
+  # Uncomment below if terraform is deployed from local
+  #credentials = "terraform_gcloud_keys.json" 
 }
