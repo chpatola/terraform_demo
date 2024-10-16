@@ -6,5 +6,5 @@
 3. Create a bucket where the state file shall be stored
 
 ## Next things to do
-1. Move to GithUb
-2. Create Github workflow, including credentials instead of local keys json file
+1. Make deployment via GitHub Actions work
+2. Configure Github to show plan output and manually run apply
