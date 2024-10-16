@@ -6,5 +6,5 @@
 3. Create a bucket where the state file shall be stored
 
 ## Next things to do
-1. Configure Github to show plan output and manually run apply
-2. Update this readme to be proper
+1. Configure Github to show plan output and manually run apply https://dineshba.github.io/posts/github-actions-approval/
+2. Update this readme to be proper 
