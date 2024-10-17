@@ -4,8 +4,8 @@
 
 ### For local Terraform use
 1. Make sure you have a service account with proper access to the resources you will create
-2. Take the key from this service account and save as terraform_gcloud_keys.json
-3. Create a bucket where the Terraform state file shall be stored. Refer to this bucket in the backend object in providers.tf
+2. Take the key from this service account and save as terraform_gcloud_keys.json. Refer to it in the backend block in  providers.tf.
+3. Create a bucket where the Terraform state file shall be stored. Refer to this bucket in the backend block in providers.tf. 
 4. Make sure you have terraform downloaded locally. HOW?
 
 
