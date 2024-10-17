@@ -1,3 +1,4 @@
+# Deploying with Terraform via GitHub Actions
 name: 'Terraform'
 
 on:
@@ -65,7 +66,7 @@ jobs:
         run: terraform init
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
-          
+      # Apply the changes from the Terraform plan    
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
