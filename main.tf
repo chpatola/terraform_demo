@@ -2,10 +2,9 @@
 resource "google_bigquery_dataset" "ds_finance" {
   dataset_id                  = "finance"
   friendly_name               = "Finance Dataset"
-  description                 = "This dataset contains tables and views used by the finance department. Restricted access"
+  description                 = "This dataset contains tables and views used by the finance department."
   location                    = var.location
   default_table_expiration_ms = var.bq_default_table_expiration_ms
-
 }
 
 resource "google_bigquery_dataset" "ds_hr" {

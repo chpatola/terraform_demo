@@ -1,8 +1,9 @@
+# Basic Terraform configurations
 terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "5.41.0"
+      version = "6.7.0"
     }
   }
   backend "gcs" {
@@ -14,9 +15,9 @@ terraform {
 }
 
 provider "google" {
-  project     = var.project
-  region      = "europe-west3"
-  zone        = "europe-west3-a"
+  project = var.project
+  region  = var.project_region
+  zone    = var.project_zone
   # Uncomment below if terraform is deployed from local
   #credentials = "terraform_gcloud_keys.json" 
 }
