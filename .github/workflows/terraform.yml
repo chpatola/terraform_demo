@@ -66,6 +66,7 @@ jobs:
         run: terraform init
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
+          
       # Apply the changes from the Terraform plan    
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
