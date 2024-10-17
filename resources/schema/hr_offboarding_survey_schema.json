@@ -1,6 +1,6 @@
 [
     {
-        "name": "question-nr",
+        "name": "question_nr",
         "type": "INT64",
         "mode": "REQUIRED",
         "description": "Number of onboarding question"
@@ -18,7 +18,7 @@
         "description": "Answer to offboarding question"
     },
     {
-        "name": "answer-time",
+        "name": "answer_time",
         "type": "TIMESTAMP",
         "mode": "NULLABLE",
         "description": "Time the question was answered"

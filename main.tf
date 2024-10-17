@@ -44,6 +44,7 @@ resource "google_bigquery_table" "view_finance_budget" {
     )
     use_legacy_sql = var.bq_use_legacy_sql
   }
+  deletion_protection = var.bq_deletion_protection
 }
 
 resource "google_bigquery_table" "view_HR_offboarding_survey" {
@@ -59,5 +60,6 @@ resource "google_bigquery_table" "view_HR_offboarding_survey" {
     )
     use_legacy_sql = var.bq_use_legacy_sql
   }
+  deletion_protection = var.bq_deletion_protection
 }
 
