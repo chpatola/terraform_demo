@@ -33,7 +33,7 @@ resource "google_bigquery_table" "table_HR_offboarding_survey" {
 # Views
 resource "google_bigquery_table" "view_finance_budget" {
   dataset_id = google_bigquery_dataset.ds_finance.dataset_id
-  table_id   = "finance_budgets_view"
+  table_id   = "finance_budget_view"
   view {
     query = templatefile("resources/sql/finance_budget_view.sql",
       # Defining the variables used in the view SQL
