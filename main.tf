@@ -31,15 +31,30 @@ resource "google_bigquery_table" "table_HR_offboarding_survey" {
 }
 
 # Views
-resource "google_bigquery_table" "table_finance_view" {
+resource "google_bigquery_table" "view_finance_budget" {
   dataset_id = google_bigquery_dataset.ds_finance.dataset_id
   table_id   = "finance_budget_view"
-  depends_on = [google_bigquery_table.table_finance_budget]
   view {
     query = templatefile("resources/sql/finance_budget_view.sql",
+      # Defining the variables used in the view SQL
       { project    = var.project,
         dataset_id = google_bigquery_table.table_finance_budget.dataset_id,
         table_id   = google_bigquery_table.table_finance_budget.table_id
+      }
+    )
+    use_legacy_sql = var.bq_use_legacy_sql
+  }
+}
+
+resource "google_bigquery_table" "view_HR_offboarding_survey" {
+  dataset_id = google_bigquery_dataset.ds_hr.dataset_id
+  table_id   = "HR_offboarding_survey_view"
+  view {
+    query = templatefile("resources/sql/HR_offboarding_survey_view.sql",
+      # Defining the variables used in the view SQL
+      { project    = var.project,
+        dataset_id = google_bigquery_table.table_HR_offboarding_survey.dataset_id,
+        table_id   = google_bigquery_table.table_HR_offboarding_survey.table_id
       }
     )
     use_legacy_sql = var.bq_use_legacy_sql
