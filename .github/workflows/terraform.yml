@@ -40,8 +40,6 @@ jobs:
     - name: Terraform Init
       # Runs command-line programs that do not exceed 21,000 characters using the operating system's shell.
       run: terraform init
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
