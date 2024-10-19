@@ -40,12 +40,12 @@ jobs:
     - name: Terraform Init
       # Runs command-line programs that do not exceed 21,000 characters using the operating system's shell.
       run: terraform init
+      # uses env
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
-      env:
-            GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY}} 
+      # uses env
 
   terraform_apply:
     name: 'Terraform apply'
@@ -67,13 +67,11 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
+        # uses env
           
       # Apply the changes from the Terraform plan    
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+        # uses env
         

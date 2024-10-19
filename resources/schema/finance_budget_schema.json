@@ -3,7 +3,7 @@
         "name": "item",
         "type": "STRING",
         "mode": "REQUIRED",
-        "description": "Budget item"
+        "description": "Budget item name"
     },
     {
         "name": "target_value",
