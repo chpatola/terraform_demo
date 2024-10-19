@@ -1,17 +1,23 @@
 # Deploying with Terraform via GitHub Actions
+
+# The name of the workflow. GitHub displays the names of your workflows under your repository's "Actions"
 name: 'Terraform'
 
+env:
+  GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY}} 
+
+# When the workflow is to run
 on:
   push:
     branches: [ "main" ]
-  pull_request:
 
-permissions:
-  contents: read
-
+# A workflow run is made up of one or more jobs, which run in parallel by default.    
 jobs:
+  # Job ID
   terraform_init_and_plan:
+    # Job name dispayed in GitHub UI.
     name: 'Terraform init and plan'
+    # Defines the type of machine to run the job on.
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -19,17 +25,20 @@ jobs:
       run:
         shell: bash
 
+    # A job contains a sequence of tasks called steps. Steps can run commands, run setup tasks, or run an action in your repository, a public repository, or an action published in a Docker registry    
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
+      # Selects an action to run as part of a step in your job. An action is a reusable unit of code. For example: https://github.com/actions/checkout
       uses: actions/checkout@v3
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token. https://github.com/hashicorp/setup-terraform
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
+      # Runs command-line programs that do not exceed 21,000 characters using the operating system's shell.
       run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
@@ -38,7 +47,7 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
       env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY}} 
+            GOOGLE_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY}} 
 
   terraform_apply:
     name: 'Terraform apply'
@@ -47,21 +56,17 @@ jobs:
     environment:
         name: live
 
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash        
     
     steps:
-      # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
-      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
         env:
